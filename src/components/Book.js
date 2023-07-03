@@ -1,8 +1,12 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import './Book.css';
 
 function Book({ bookItem }) {
   const { categories, title, author } = bookItem;
+  const percentage = 66;
   return (
     <>
       <div>
@@ -16,9 +20,11 @@ function Book({ bookItem }) {
         </div>
       </div>
       <div>
-        <div>Progressive bar</div>
+        <div className="circular-progressbar">
+          <CircularProgressbar className="progresBar" value={percentage} />
+        </div>
         <div>
-          <div>Percentage</div>
+          <div>{`${percentage}%`}</div>
           <div>completed</div>
         </div>
       </div>
