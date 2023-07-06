@@ -1,11 +1,16 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { CircularProgressbar } from 'react-circular-progressbar';
+import { removeBook } from '../redux/books/books';
 import 'react-circular-progressbar/dist/styles.css';
 import './Book.css';
 
 function Book({ bookItem }) {
-  const { categories, title, author } = bookItem;
+  const dispatch = useDispatch();
+  const {
+    id, categories, title, author,
+  } = bookItem;
   const percentage = 66;
   return (
     <>
@@ -15,7 +20,7 @@ function Book({ bookItem }) {
         <span>{author}</span>
         <div>
           <button type="button">Comments</button>
-          <button type="button">Remove</button>
+          <button type="button" onClick={() => dispatch(removeBook(id))}>Remove</button>
           <button type="button">Edit</button>
         </div>
       </div>

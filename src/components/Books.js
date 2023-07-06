@@ -1,33 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import InputForm from './InputForm';
+import { getBooks } from '../redux/books/books';
 
-const bookItems = [
-  {
-    id: 1, title: 'Urban Fisherman', author: 'James Washington', categories: 'Action',
-  },
-  {
-    id: 2, title: 'Thing Fall Apart', author: 'Okonkwo Chidi', categories: 'Drama',
-  },
-  {
-    id: 3, title: 'Avatar', author: 'James Washington', categories: 'Sci-Fiction',
-  },
-  {
-    id: 4, title: 'beauty and the Beast', author: 'Stanley Young', categories: 'Romance',
-  },
-];
-
-function Books() {
+const Books = () => {
+  const bookItems = useSelector((state) => state.books);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
   return (
     <>
       <div>
-        {bookItems.map((bookItem) => (<Book key={bookItem.id} bookItem={bookItem} />))}
+        {Array.isArray(bookItems) ? bookItems.map((bookItem) => (<Book key={bookItem.id} bookItem={bookItem} />)) : 'Not Array'}
       </div>
       <div>
         <InputForm />
       </div>
     </>
   );
-}
+};
 
 export default Books;
