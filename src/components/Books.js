@@ -2,18 +2,19 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import InputForm from './InputForm';
-import { getBooks } from '../redux/books/books';
+import { fetchBooks } from '../redux/books/booksSlice';
 
 const Books = () => {
-  const bookItems = useSelector((state) => state.books);
+  const { books } = useSelector((state) => state.books);
+  console.log(books);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getBooks());
+    dispatch(fetchBooks());
   }, [dispatch]);
   return (
     <>
       <div>
-        {Array.isArray(bookItems) ? bookItems.map((bookItem) => (<Book key={bookItem.id} bookItem={bookItem} />)) : 'Not Array'}
+        {Array.isArray(books) ? books.map((bookItem) => (<Book key={bookItem.id} bookItem={bookItem} />)) : 'Not Array'}
       </div>
       <div>
         <InputForm />
