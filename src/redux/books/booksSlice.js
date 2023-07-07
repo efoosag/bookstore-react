@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 const url = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/zelh2Qhasjgvb59w91ic/books';
 
 export const fetchBooks = createAsyncThunk(
-  'cart/getCartItems',
+  'books/getBooks',
   async (thunkAPI) => {
     try {
       const resp = await axios(url);
@@ -22,62 +22,40 @@ export const fetchBooks = createAsyncThunk(
   },
 );
 
-// const ADD_BOOK = 'book/add book';
-// const REMOVE_BOOK = 'book/remove book';
-// const GET_BOOKS = 'book/get books';
+export const removeBook = createAsyncThunk(
+  'books/removeBook',
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`${url}/${id}`);
+      return id;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('something went wrong');
+    }
+  },
+);
 
-// const books = [
-//   {
-//     id: 1, title: 'Urban Fisherman', author: 'James Washington', categories: 'Action',
-//   },
-//   {
-//     id: 2, title: 'Thing Fall Apart', author: 'Okonkwo Chidi', categories: 'Drama',
-//   },
-//   {
-//     id: 3, title: 'Avatar', author: 'James Washington', categories: 'Sci-Fiction',
-//   },
-//   {
-//     id: 4, title: 'beauty and the Beast', author: 'Stanley Young', categories: 'Romance',
-//   },
-// ];
+export const addBook = createAsyncThunk(
+  'books/addBook',
+  async (book) => {
+    try {
+      const response = await axios({
+        method: 'post',
+        url,
+        data: {
+          item_id: book.id, title: book.title, author: book.author, category: book.category,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  },
+);
 
 const initialState = {
   books: [],
   isLoading: true,
 };
-
-// export const getBooks = () => ({
-//   type: GET_BOOKS,
-//   books,
-// });
-
-// export const addBook = (book) => ({
-//   type: ADD_BOOK,
-//   book,
-// });
-
-// export const removeBook = (id) => ({
-//   type: REMOVE_BOOK,
-//   id,
-// });
-
-// const BookReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case (GET_BOOKS):
-//       return action.books;
-//     case (ADD_BOOK):
-//       return [
-//         ...state,
-//         action.book,
-//       ];
-//     case (REMOVE_BOOK):
-//       return state.filter((book) => book.id !== action.id);
-//     default:
-//       return state;
-//   }
-// };
-
-// export default BookReducer;
 
 const booksSlice = createSlice({
   name: 'books',
@@ -94,6 +72,10 @@ const booksSlice = createSlice({
     [fetchBooks.rejected]: (state) => {
       state.isLoading = false;
     },
+    // [addBook.fulfilled]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.books = action.payload;
+    // },
   },
 
 });
