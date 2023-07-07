@@ -5,7 +5,6 @@ import { addBook } from '../redux/books/booksSlice';
 
 function InputForm() {
   const dispatch = useDispatch();
-
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');

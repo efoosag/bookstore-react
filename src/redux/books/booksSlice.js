@@ -38,14 +38,14 @@ export const addBook = createAsyncThunk(
   'books/addBook',
   async (book) => {
     try {
-      const response = await axios({
+      await axios({
         method: 'post',
         url,
         data: {
           item_id: book.id, title: book.title, author: book.author, category: book.category,
         },
       });
-      return response.data;
+      return book;
     } catch (error) {
       return error;
     }
@@ -72,10 +72,6 @@ const booksSlice = createSlice({
     [fetchBooks.rejected]: (state) => {
       state.isLoading = false;
     },
-    // [addBook.fulfilled]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.books = action.payload;
-    // },
   },
 
 });
