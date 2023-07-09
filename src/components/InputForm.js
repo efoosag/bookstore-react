@@ -29,12 +29,19 @@ function InputForm() {
   };
 
   return (
-    <form>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} name="title" placeholder="Title" />
-      <input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} name="author" placeholder="Author" />
-      <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} name="category" placeholder="Category" />
-      <input type="submit" onClick={submitBook} />
-    </form>
+    <div className="form-container">
+      <div className="form-title">
+        <h2> ADD NEW BOOK</h2>
+      </div>
+
+      <form>
+        <input type="text" value={title} className="input" onChange={(e) => setTitle(e.target.value)} name="title" placeholder="Title" />
+        <input type="text" value={author} className="input" onChange={(e) => setAuthor(e.target.value)} name="author" placeholder="Author" />
+        <input type="text" value={category} className="input" onChange={(e) => setCategory(e.target.value)} name="category" placeholder="Category" />
+        <input type="submit" className="add-book" onClick={submitBook} />
+      </form>
+
+    </div>
   );
 }
 
