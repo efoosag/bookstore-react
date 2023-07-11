@@ -33,9 +33,10 @@ nav {
 }
 
 .panel-bg {
+  display: flex;
   height: 2rem;
   margin: 0 auto;
-  padding: 1.438rem 0 1.688rem 0;
+  padding: 1.438rem 2rem 1.688rem 2rem;
   background-color: var(--white-two);
 }
 
@@ -94,11 +95,12 @@ nav {
 
 .display-Panel {
   display:flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  height: 10.625rem;
+  height: auto;
   margin: 2.313rem 6.25rem 0;
-  padding: 2rem 9.188rem 1.625rem 1.688rem;
+  padding: 2rem 1.688rem 1.625rem 1.688rem;
   border-radius: 4px;
   border: solid 1px #e8e8e8;
   background-color: var(--white-two);
@@ -107,7 +109,6 @@ nav {
 .category {
   width: 3.063rem;
   height: 1.125rem;
-  margin: 0 2.438rem 0 0;
   opacity: 0.5;
   font-family: Montserrat;
   font-size: 0.875rem;
@@ -122,7 +123,6 @@ nav {
 .title {
   width: 12.313rem;
   height: 1.813rem;
-  margin: 0.188rem 0 0 0;
   font-family: RobotoSlab;
   font-size: 1.375rem;
   font-weight: bold;
@@ -149,7 +149,6 @@ nav {
 
 .btn {
   height: 1.188rem;
-  margin: 1.188rem 0.938rem 0.125rem 0;
   font-family: RobotoSlab;
   font-size: 0.875rem;
   font-weight: 300;
@@ -204,7 +203,6 @@ nav {
 .percentage {
   width: 4.25rem;
   height: 2.438rem;
-  margin: 0 2.75rem 0 0.688rem;
   font-family: Montserrat;
   font-size: 2rem;
   font-weight: normal;
@@ -218,7 +216,6 @@ nav {
 .percentage-completed {
   width: 5rem;
   height: 1.125rem;
-  margin: 0 2.938rem 0.75rem 0.75rem;
   opacity: 0.5;
   font-family: Montserrat;
   font-size: 0.875rem;
