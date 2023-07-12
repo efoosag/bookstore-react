@@ -16,11 +16,11 @@ function Navigation() {
 
           </Link>
         </div>
-        <divc className="Oval">
+        <div className="Oval">
           <Link to="/books">
             <FaRegUserCircle className="Mask" />
           </Link>
-        </divc>
+        </div>
       </nav>
       <Outlet />
     </>
