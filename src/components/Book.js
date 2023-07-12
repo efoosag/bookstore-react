@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import { removeBook } from '../redux/books/booksSlice';
 import 'react-circular-progressbar/dist/styles.css';
-import './Book.css';
 
 function Book({ bookItem }) {
   const dispatch = useDispatch();
