@@ -35,7 +35,7 @@
 
 ### For Live Demo
 
-- https://efoosag.github.io/bookstore/
+- https://efoosag.github.io/bookstore-react/
 
 ### Prerequisites
 
